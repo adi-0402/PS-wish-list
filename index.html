@@ -1,157 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wish List</title>
-    <link href="style.css" rel="stylesheet"></link>
+    <title>Baby Shower</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>
-            ¡Bienvenido Jean Pierre! 
-        </h1>
-    </header>
-    <main>
-        <div class="mensaje">
-            <p>
-                ¡Hola a todos! Pronto llegará nuestro pequeño <strong>Jean Pierre</strong> , y estamos muy emocionados por su llegada.
-            </p>
-            <p>
-                Si desean acompañarnos en este hermoso momento, hemos creado una lista de deseos donde pueden colaborar con un regalito para prepararnos para su llegada.
-            </p>
-            <p>
-                ¡Gracias por ser parte de este gran acontecimiento!
-            </p>
+
+    <!-- Video Section -->
+    <section id="video-section">
+        <video width="100%" controls>
+            <source src="sofa.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de videos.
+        </video>
+        <button id="continue-btn">Continuar</button>
+    </section>
+
+    <!-- Main Content Section (Hidden initially) -->
+    <section id="main-content" style="display:none;">
+        <h1>Pronto llegará nuestro pequeño Jean Pierre...</h1>
+            <p>¡Estamos muy emocionados por su llegada! Si desean acompañarnos en este momento tan especial, hemos preparado una lista de deseos donde pueden colaborar con un pequeño regalito para ayudarnos a prepararnos para su llegada. </p>
+            <p>¡Gracias por ser parte de este acontecimiento tan importante para nosotros!</p>
+            <h5>Elige los artículos que quisieras regalar, y al final verás el total. Por favor, realiza el depósito en la cuenta indicada. No olvides incluir tu nombre y un mensaje especial al final de la página. ¡Nos encantaría leerlo! 🥰</h5>
+        <!-- Items Selection -->
+        <div class="items"></div>
+        <div class="item">
+            <img src="assets/gift.png" alt="Gift" class="item-image">
+            <label>
+                Gift<input type="number" id="gift-amount" min="0" value="0"> 
+                <div class="price">PEN</div>
+            </label>
         </div>
 
-            <div class="card">
-                <img alt="Pañalera" class="img" src="/assets/bag.png">
-                <p class="card-title">Pañalera</p>
-                <p class="card-title">59 CAD = 166 PEN</p>
-            </div>
+        <!-- Total and Payment Info -->
+        <div class="total-section">
+            <h2>Total: <span id="total">0</span> PEN</h2>
+            <p>Número de cuenta BCP Soles: <strong>19101973366097</strong></p>
+            <p>Número de cuenta interbancaria: <strong>00219110197336609750</strong></p>
+            <p>Las cuentas estan a nombre de mi hermanita Adriana🥰</p>
+        </div>
 
-            <div class="card">
-                <img alt="Bañera" class="img" src="/assets/bath.png">
-                <p class="card-title">Bañera</p>
-                <p class="card-title">56 CAD = 157 PEN</p>
-            </div>
+        <!-- Message Section -->
+        <div class="message-section">
+            <h3>Escribe un mensaje para los papitos:</h3>
+            <input type="text" id="buyer-name" placeholder="Tu nombre">
+            <textarea id="custom-message" placeholder="Escribe un mensaje..."></textarea>
+            <button id="send-message-btn">Enviar Mensaje</button>
+        </div>
+    </section>
 
-            <div class="card">
-                <img alt="Biberón" class="img" src="/assets/biberon.png">
-                <p class="card-title">Biberón</p>
-                <p class="card-title">30 CAD = 84 PEN</p>
-            </div>
+    <!-- Script de EmailJS -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        emailjs.init(); 
+    </script>
 
-            <div class="card">
-                <img alt="Mantita" class="img" src="/assets/blanket.png">
-                <p class="card-title">Mantita</p>
-                <p class="card-title">39 CAD = 110 PEN</p>
-            </div>
+    <script src="script.js"></script>
 
-            <div class="card">
-                <img alt="Caja Organizadora" class="img" src="/assets/box.png">
-                <p class="card-title">Caja Organizadora</p>
-                <p class="card-title">13 CAD = 37 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Conejito de Peluche" class="img" src="/assets/bunny.png">
-                <p class="card-title">Conejito de Peluche</p>
-                <p class="card-title">6 CAD = 17 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Camara Vigilante" class="img" src="/assets/camera.png">
-                <p class="card-title">Camara Vigilante</p>
-                <p class="card-title">110 CAD = 309 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Colchón" class="img" src="/assets/colchon.png">
-                <p class="card-title">Colchón</p>
-                <p class="card-title">99 CAD = 278 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Peluche de Conejito" class="img" src="/assets/conejito.png">
-                <p class="card-title">Peluche de Conejito</p>
-                <p class="card-title">4 CAD = 11 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Pañales" class="img" src="/assets/diapers.png">
-                <p class="card-title">Pañales</p>
-                <p class="card-title">40 CAD = 112 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Platitos" class="img" src="/assets/feeding.png">
-                <p class="card-title">Platitos</p>
-                <p class="card-title">26 CAD = 73 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Juego" class="img" src="/assets/juego.png">
-                <p class="card-title">Juego</p>
-                <p class="card-title">30 CAD = 84 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Estrellas" class="img" src="/assets/juguete.png">
-                <p class="card-title">Estrellas</p>
-                <p class="card-title">45 CAD = 126 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Mantita" class="img" src="/assets/manta.png">
-                <p class="card-title">Mantita</p>
-                <p class="card-title">9 CAD = 25 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Babero" class="img" src="/assets/mantita.png">
-                <p class="card-title">Babero</p>
-                <p class="card-title">10 CAD = 28 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Lampara" class="img" src="/assets/nave.png">
-                <p class="card-title">Nave Lampara</p>
-                <p class="card-title">25 CAD = 70 PEN</p>
-            </div>
-
-            <div class="card">
-                <img alt="Organizador" class="img" src="/assets/organizer.png">
-                <p class="card-title">Organizador</p>
-                <p class="card-title">32 CAD = 90 PEN</p>
-            </div>
-
-                <img class="img" src="/assets/oso-marron.png">
-                <img class="img" src="/assets/oso.png">
-                <img class="img" src="/assets/pared.png">
-                <img class="img" src="/assets/penguin.png">
-                <img class="img" src="/assets/pijamas.png">
-                <img class="img" src="/assets/pillow.png">
-                <img class="img" src="/assets/pump.png">
-                <img class="img" src="/assets/silver-cups.png">
-                <img class="img" src="/assets/sleep-clothes.png">
-                <img class="img" src="/assets/socks.png">
-                <img class="img" src="/assets/tachito.png">
-                <img class="img" src="/assets/tortuga.png">
-                <img class="img" src="/assets/towel.png">
-                <img class="img" src="/assets/turtle-pack.png">
-                <img class="img" src="/assets/wrap.png">
-                <img class="img" src="/assets/gift.png">
-
-
-
-
-    </main>
-    <footer>
-        <p>
-            Besos y Abrazos - Sofia y Juan Carlos
-        </p>
-    </footer>
 </body>
 </html>
