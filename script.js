@@ -95,9 +95,6 @@ giftInput.addEventListener('input', () => {
 // Enviar mensaje (con EmailJS)
 const sendBtn = document.getElementById('send-message-btn');
 
-// Enviar mensaje (con EmailJS)
-const sendBtn = document.getElementById('send-message-btn');
-
 sendBtn.addEventListener('click', () => {
     const buyerName = document.getElementById('buyer-name').value;
     const message = document.getElementById('custom-message').value;
@@ -122,15 +119,15 @@ sendBtn.addEventListener('click', () => {
         gift_amount: giftAmount
     };
 
-    console.log("Enviando parámetros de correo: ", emailParams); // Verificar en consola los datos enviados
+    console.log("Enviando parámetros de correo: ", emailParams);
 
-    // Enviar correo con EmailJS utilizando la clave pública
+    // Enviar correo con EmailJS
     emailjs.send('service_ipajrpn', 'template_z3vjahc', emailParams)
         .then(function(response) {
-            console.log("Correo enviado exitosamente", response.status, response.text); // Confirmación en consola
-            alert("Correo enviado exitosamente!");  // Mensaje al usuario
+            console.log("Correo enviado exitosamente", response.status, response.text);
+            alert("Correo enviado exitosamente!");
         }, function(error) {
-            console.error("Error al enviar el correo: ", error);  // Mostrar errores en consola
+            console.error("Error al enviar el correo: ", error);
             alert("Hubo un error al enviar el correo. Revisa los detalles en la consola.");
         });
 });
