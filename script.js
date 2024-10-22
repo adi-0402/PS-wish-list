@@ -1,3 +1,9 @@
+// Inicializar EmailJS con la clave pública proporcionada
+(function() {
+    emailjs.init("9whPqkgqidvtcME3T");  // Inicializa con tu clave pública
+    console.log("EmailJS inicializado"); // Confirmación en consola
+})();
+
 // Productos con nombre, precio e imagen
 const productos = [
     {nombre: "Pañales", precio: 120, imagen: "assets/diapers.png"},
@@ -92,18 +98,16 @@ giftInput.addEventListener('input', () => {
     totalDisplay.innerText = total;
 });
 
-// Inicializar EmailJS con la clave pública proporcionada
-(function() {
-    emailjs.init("9whPqkgqidvtcME3T");  // Aquí va la clave pública que compartiste
-    console.log("EmailJS inicializado"); // Confirmación en consola de que EmailJS se ha inicializado
-})();
+// Enviar mensaje (con EmailJS)
+const sendBtn = document.getElementById('send-message-btn');
 
-// Enviar correo con EmailJS
+// Enviar mensaje (con EmailJS)
+const sendBtn = document.getElementById('send-message-btn');
+
 sendBtn.addEventListener('click', () => {
     const buyerName = document.getElementById('buyer-name').value;
     const message = document.getElementById('custom-message').value;
 
-    // Verificar si los campos obligatorios están completos
     if (!buyerName || !message) {
         alert("Por favor, completa todos los campos.");
         return;
@@ -124,17 +128,18 @@ sendBtn.addEventListener('click', () => {
         gift_amount: giftAmount
     };
 
-    console.log("Enviando parámetros de correo: ", emailParams); // Verificar parámetros en consola
+    console.log("Enviando parámetros de correo: ", emailParams); // Verificar en consola los datos enviados
 
-    // Llamada a EmailJS para enviar el correo
+    // Enviar correo con EmailJS utilizando la clave pública
     emailjs.send('service_ipajrpn', 'template_z3vjahc', emailParams)
         .then(function(response) {
             console.log("Correo enviado exitosamente", response.status, response.text); // Confirmación en consola
             alert("Correo enviado exitosamente!");  // Mensaje al usuario
         }, function(error) {
-            console.error("Error al enviar el correo: ", error);  // Mensaje de error en consola
-            alert("Hubo un error al enviar el correo. Por favor, revisa los detalles en la consola.");
+            console.error("Error al enviar el correo: ", error);  // Mostrar errores en consola
+            alert("Hubo un error al enviar el correo. Revisa los detalles en la consola.");
         });
 });
+
 
 
