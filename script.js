@@ -92,9 +92,7 @@ giftInput.addEventListener('input', () => {
     totalDisplay.innerText = total;
 });
 
-// Enviar mensaje (con EmailJS)
-const sendBtn = document.getElementById('send-message-btn');
-
+// Enviar mensaje usando la API REST de EmailJS
 sendBtn.addEventListener('click', () => {
     const buyerName = document.getElementById('buyer-name').value;
     const message = document.getElementById('custom-message').value;
@@ -112,24 +110,41 @@ sendBtn.addEventListener('click', () => {
     const total = totalDisplay.innerText;
 
     const emailParams = {
-        buyer_name: buyerName,
-        selected_items: selectedItems.join(", "),
-        total: total,
-        custom_message: message,
-        gift_amount: giftAmount
+        service_id: 'service_ipajrpn',  // Reemplaza con tu Service ID
+        template_id: 'template_z3vjahc', // Reemplaza con tu Template ID
+        user_id: '9whPqkgqidvtcME3T',   // Reemplaza con tu Public Key (User ID)
+        template_params: {
+            buyer_name: buyerName,
+            selected_items: selectedItems.join(", "),
+            total: total,
+            custom_message: message,
+            gift_amount: giftAmount
+        }
     };
 
     console.log("Enviando parámetros de correo: ", emailParams);
 
-    // Enviar correo con EmailJS
-    emailjs.send('service_ipajrpn', 'template_z3vjahc', emailParams)
-        .then(function(response) {
-            console.log("Correo enviado exitosamente", response.status, response.text);
-            alert("Correo enviado exitosamente!");
-        }, function(error) {
-            console.error("Error al enviar el correo: ", error);
-            alert("Hubo un error al enviar el correo. Revisa los detalles en la consola.");
-        });
+    // Usar fetch para enviar el correo usando la API REST de EmailJS
+    fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailParams)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('¡Correo enviado exitosamente!');
+        } else {
+            return response.json().then(error => {
+                throw new Error(error.text);
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error al enviar el correo:', error);
+        alert('Hubo un error al enviar el correo. Revisa los detalles en la consola.');
+    });
 });
 
 
