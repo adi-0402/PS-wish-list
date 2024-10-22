@@ -49,11 +49,23 @@
     </section>
 
     <!-- Script de EmailJS -->
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script type="text/javascript">
-        emailjs.init(); 
-    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        emailjs.init("9whPqkgqidvtcME3T");
 
+        // Aquí puedes llamar a tu script.js
+        const continueBtn = document.getElementById('continue-btn');
+        const videoSection = document.getElementById('video-section');
+        const mainContent = document.getElementById('main-content');
+
+        continueBtn.addEventListener('click', () => {
+            videoSection.style.display = 'none';
+            mainContent.style.display = 'block';
+        });
+
+        console.log("DOM completamente cargado");
+    });
+    </script>
     <script src="script.js"></script>
 
 </body>
