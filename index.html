@@ -57,64 +57,67 @@
         emailjs.init("9whPqkgqidvtcME3T");
         console.log("EmailJS inicializado");
 
-        const sendBtn = document.getElementById('send-message-btn');
-        if (sendBtn) {
-            sendBtn.addEventListener('click', () => {
-                const buyerName = document.getElementById('buyer-name').value;
-                const message = document.getElementById('custom-message').value;
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sendBtn = document.getElementById('send-message-btn');
+            if (sendBtn) {
+                sendBtn.addEventListener('click', () => {
+                    const buyerName = document.getElementById('buyer-name').value;
+                    const message = document.getElementById('custom-message').value;
 
-                if (!buyerName || !message) {
-                    alert("Por favor, completa todos los campos.");
-                    return;
-                }
-
-                const selectedItems = Array.from(itemsContainer.querySelectorAll('input[type="checkbox"]'))
-                    .filter(box => box.checked)
-                    .map(box => box.parentElement.textContent.trim());
-
-                const giftAmount = parseInt(giftInput.value) || 0;
-                const total = totalDisplay.innerText;
-
-                const emailParams = {
-                    service_id: 'service_ipajrpn',
-                    template_id: 'template_z3vjahc',
-                    user_id: '9whPqkgqidvtcME3T',
-                    template_params: {
-                        buyer_name: buyerName,
-                        selected_items: selectedItems.join(", "),
-                        total: total,
-                        custom_message: message,
-                        gift_amount: giftAmount
+                    if (!buyerName || !message) {
+                        alert("Por favor, completa todos los campos.");
+                        return;
                     }
-                };
 
-                fetch('https://api.emailjs.com/api/v1.0/email/send', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(emailParams)
-                })
-                .then(response => {
-                    if (response.ok) {
-                        alert('¡Correo enviado exitosamente!');
-                    } else {
-                        return response.json().then(error => {
-                            throw new Error(error.text);
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al enviar el correo:', error);
-                    alert('Hubo un error al enviar el correo. Revisa los detalles en la consola.');
+                    const selectedItems = Array.from(itemsContainer.querySelectorAll('input[type="checkbox"]'))
+                        .filter(box => box.checked)
+                        .map(box => box.parentElement.textContent.trim());
+
+                    const giftAmount = parseInt(giftInput.value) || 0;
+                    const total = totalDisplay.innerText;
+
+                    const emailParams = {
+                        service_id: 'service_ipajrpn',
+                        template_id: 'template_z3vjahc',
+                        user_id: '9whPqkgqidvtcME3T',
+                        template_params: {
+                            buyer_name: buyerName,
+                            selected_items: selectedItems.join(", "),
+                            total: total,
+                            custom_message: message,
+                            gift_amount: giftAmount
+                        }
+                    };
+
+                    // Verifica qué valores se están enviando
+                    console.log("Valores de los parámetros enviados: ", emailParams.template_params);
+
+                    fetch('https://api.emailjs.com/api/v1.0/email/send', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(emailParams)
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('¡Correo enviado exitosamente!');
+                        } else {
+                            return response.json().then(error => {
+                                throw new Error(error.text);
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al enviar el correo:', error);
+                        alert('Hubo un error al enviar el correo. Revisa los detalles en la consola.');
+                    });
                 });
-            });
-        } else {
-            console.error("Botón de envío no encontrado.");
-        }
-
-        console.log("DOM completamente cargado");
-    });
+            } else {
+                console.error("Botón de envío no encontrado.");
+            }
+        });
     </script>
     
     <script src="script.js"></script>
