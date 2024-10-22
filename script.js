@@ -92,9 +92,10 @@ giftInput.addEventListener('input', () => {
     totalDisplay.innerText = total;
 });
 
-// Inicializar EmailJS con la Public Key
+// Inicializar EmailJS con la clave pública proporcionada
 (function() {
-    emailjs.init("9whPqkgqidvtcME3T");
+    emailjs.init("9whPqkgqidvtcME3T");  // Aquí va la clave pública que compartiste
+    console.log("EmailJS inicializado"); // Confirmación en consola de que EmailJS se ha inicializado
 })();
 
 // Enviar correo con EmailJS
@@ -102,6 +103,7 @@ sendBtn.addEventListener('click', () => {
     const buyerName = document.getElementById('buyer-name').value;
     const message = document.getElementById('custom-message').value;
 
+    // Verificar si los campos obligatorios están completos
     if (!buyerName || !message) {
         alert("Por favor, completa todos los campos.");
         return;
@@ -122,11 +124,17 @@ sendBtn.addEventListener('click', () => {
         gift_amount: giftAmount
     };
 
+    console.log("Enviando parámetros de correo: ", emailParams); // Verificar parámetros en consola
+
+    // Llamada a EmailJS para enviar el correo
     emailjs.send('service_ipajrpn', 'template_z3vjahc', emailParams)
         .then(function(response) {
-            alert("Correo enviado exitosamente!");
+            console.log("Correo enviado exitosamente", response.status, response.text); // Confirmación en consola
+            alert("Correo enviado exitosamente!");  // Mensaje al usuario
         }, function(error) {
-            alert("Hubo un error al enviar el correo: " + JSON.stringify(error));
+            console.error("Error al enviar el correo: ", error);  // Mensaje de error en consola
+            alert("Hubo un error al enviar el correo. Por favor, revisa los detalles en la consola.");
         });
 });
+
 
