@@ -1,9 +1,3 @@
-// Inicializar EmailJS con la clave pública proporcionada
-(function() {
-    emailjs.init("9whPqkgqidvtcME3T");  // Inicializa con tu clave pública
-    console.log("EmailJS inicializado"); // Confirmación en consola
-})();
-
 // Productos con nombre, precio e imagen
 const productos = [
     {nombre: "Pañales", precio: 120, imagen: "assets/diapers.png"},
