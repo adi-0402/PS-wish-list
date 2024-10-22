@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baby Shower</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -48,24 +49,29 @@
         </div>
     </section>
 
-    <!-- Script de EmailJS -->
+    <!-- Inicialización de EmailJS y manipulación del DOM -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        emailjs.init("9whPqkgqidvtcME3T");
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializa EmailJS con tu clave pública
+            emailjs.init("9whPqkgqidvtcME3T"); 
+            console.log("EmailJS inicializado");
 
-        // Aquí puedes llamar a tu script.js
-        const continueBtn = document.getElementById('continue-btn');
-        const videoSection = document.getElementById('video-section');
-        const mainContent = document.getElementById('main-content');
+            // Manipulación del DOM para el botón "Continuar"
+            const continueBtn = document.getElementById('continue-btn');
+            const videoSection = document.getElementById('video-section');
+            const mainContent = document.getElementById('main-content');
 
-        continueBtn.addEventListener('click', () => {
-            videoSection.style.display = 'none';
-            mainContent.style.display = 'block';
+            continueBtn.addEventListener('click', () => {
+                videoSection.style.display = 'none';
+                mainContent.style.display = 'block';
+            });
+
+            console.log("DOM completamente cargado");
         });
-
-        console.log("DOM completamente cargado");
-    });
     </script>
+
+    <!-- Cargar el resto del script desde script.js -->
     <script src="script.js"></script>
 
 </body>
