@@ -92,9 +92,12 @@ giftInput.addEventListener('input', () => {
     totalDisplay.innerText = total;
 });
 
-// Enviar mensaje (con EmailJS)
-const sendBtn = document.getElementById('send-message-btn');
+// Inicializar EmailJS con la Public Key
+(function() {
+    emailjs.init("9whPqkgqidvtcME3T");
+})();
 
+// Enviar correo con EmailJS
 sendBtn.addEventListener('click', () => {
     const buyerName = document.getElementById('buyer-name').value;
     const message = document.getElementById('custom-message').value;
@@ -119,7 +122,6 @@ sendBtn.addEventListener('click', () => {
         gift_amount: giftAmount
     };
 
-    // Enviar correo con EmailJS sin User ID, pero con Service ID y Template ID
     emailjs.send('service_ipajrpn', 'template_z3vjahc', emailParams)
         .then(function(response) {
             alert("Correo enviado exitosamente!");
