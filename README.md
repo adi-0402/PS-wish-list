@@ -10,7 +10,7 @@ Este proyecto es una página web de wishlist creada para Jean Pierre, que permit
 - Simulación de compra sin transacciones reales.
 - Envío de un mensaje personalizado para los padres tras confirmar la compra.
 
-![Captura de Pantalla](assets/captura_wishlist.png)
+![Captura de Pantalla](assets/Screenshot_4.png)
 
 ## 🛠 Tecnologías Utilizadas
 - HTML
