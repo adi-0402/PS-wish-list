@@ -56,7 +56,8 @@
         // Inicializa EmailJS
         emailjs.init("9whPqkgqidvtcME3T");
         console.log("EmailJS inicializado");
-
+        
+        const sendBtn = document.getElementById('send-message-btn');
         sendBtn.addEventListener('click', () => {
             const buyerName = document.getElementById('buyer-name').value;
             const message = document.getElementById('custom-message').value;
