@@ -6,7 +6,14 @@
     <title>Baby Shower</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+        emailjs.init({
+          publicKey: "9whPqkgqidvtcME3T" // Reemplaza con tu clave pública real
+        });
+      })();
+    </script>
 </head>
 
 <body>
@@ -91,7 +98,7 @@
                     alert("Correo enviado exitosamente!");
                 }, function(error) {
                     console.error("Error al enviar el correo: ", error);
-                    alert("Hubo un error al enviar el correo. Revisa los detalles en la consola.");
+                    alert("Hubo un error al enviar el correo.");
                 });
         });
     });  // Aquí faltaba cerrar la llave del addEventListener para cerrar el bloque
