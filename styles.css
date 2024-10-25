@@ -35,7 +35,7 @@ p {
 }
 
 .arrows {
-    font-size: 25rem; /* Tamaño de las flechas */
+    font-size: 18rem; /* Tamaño de las flechas */
     animation: bounce 1.5s infinite; /* Animación de rebote */
 }
 
