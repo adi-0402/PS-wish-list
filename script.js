@@ -25,15 +25,9 @@ const productos = [
     {nombre: "Baberos", precio: 30, imagen: "assets/mantita.png"},
 ];
 
-// Mostrar el contenido principal después del video
-const continueBtn = document.getElementById('continue-btn');
+// Mostrar el contenido principal
 const videoSection = document.getElementById('video-section');
 const mainContent = document.getElementById('main-content');
-
-continueBtn.addEventListener('click', () => {
-    videoSection.style.display = 'none';
-    mainContent.style.display = 'block';
-});
 
 // Contenedor donde se agregarán los productos dinámicamente
 const itemsContainer = document.querySelector('.items');
