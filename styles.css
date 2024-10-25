@@ -23,8 +23,13 @@ p {
     margin-bottom: 20px;
 }
 
-#video-section {
-    margin: 20px 0;
+/* Video responsivo */
+#video-section iframe {
+    width: 100%;   /* El video ocupará todo el ancho de la pantalla */
+    max-width: 640px;  /* Pero no más de 640px en pantallas grandes */
+    height: auto;  /* Ajusta la altura automáticamente para mantener la relación de aspecto */
+    display: block;
+    margin: 0 auto;  /* Centra el video horizontalmente */
 }
 
 .scroll-hint {
@@ -137,4 +142,31 @@ button {
 
 button:hover {
     background-color: #218838;
+}
+
+/* Estilos para pantallas más pequeñas (como teléfonos móviles) */
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 14px;  /* Reducimos el tamaño de la fuente */
+    }
+
+    h1 {
+        font-size: 20px;  /* Tamaño más pequeño para los títulos */
+    }
+
+    .total-section h2 {
+        font-size: 18px;  /* Ajusta el tamaño de las secciones */
+    }
+
+    .scroll-hint p {
+        font-size: 16px;  /* Tamaño de texto más pequeño para el mensaje */
+    }
+
+    .arrows {
+        font-size: 1.5rem;  /* Tamaño de las flechas un poco más pequeño */
+    }
+    
+    .message-section input, .message-section textarea {
+        width: 100%; /* Asegura que los inputs ocupen todo el ancho en pantallas pequeñas */
+    }
 }
