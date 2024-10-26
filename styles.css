@@ -143,6 +143,17 @@ button {
 button:hover {
     background-color: #218838;
 }
+.meme {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .meme {
+        max-width: 100%; /* Permite que la imagen ocupe todo el ancho en pantallas pequeñas */
+    }
+}
 
 /* Estilos para pantallas más pequeñas (como teléfonos móviles) */
 @media only screen and (max-width: 600px) {
